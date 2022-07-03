@@ -4,7 +4,7 @@ const { User } = require('../model')
 
 module.exports = async (req, res, next) => {
     //1. 从请求头获取token 数据
-    let token = req.headers['authorization']
+    let token = req.headers['Authorization']
     console.log(token)
     token = token
         ? token.split('Bearer ')[1]

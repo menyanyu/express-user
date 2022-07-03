@@ -11,7 +11,9 @@ router.post('/login',userValidator.login, userCtrl.login);
 // 用户注册
 router.post('/register',userValidator.register, userCtrl.register ) 
 
+
 // 用户信息
 router.get('/user',auth,userCtrl.getCurrentUser ) 
+
 
 module.exports = router;

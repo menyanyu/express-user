@@ -3,15 +3,16 @@ const { body } = require('express-validator')
 const { User } = require('../model')
 const md5 = require('../util/md5')
 
+
 exports.register = validate([
-    body('user.username').notEmpty().withMessage('用户名不能为空')
+    body('username').notEmpty().withMessage('用户名不能为空')
         .custom(async username => {
-            const user = await User.findOne({ username })
+            const user = await User.findOne({username})
             if (user) {
                 return Promise.reject('用户名已存在')
             }
         }),
-    body('user.password').notEmpty().withMessage('密码不能为空'),
+    body('password').notEmpty().withMessage('密码不能为空'),
 ])
 
 

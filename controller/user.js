@@ -7,15 +7,16 @@ const { jwtSecret } = require('../config/config.default')
 exports.register = async (req, res, next) => {
     try {
         let user = new User(req.body.user)
-        //保存到数据库
+        // //保存到数据库
         await user.save()
         user = user.toJSON()
         delete user.password
-        //发送成功响应
+        // //发送成功响应
         res.status(201).json({ user })
     } catch (error) {
         next(error)
     }
+    
 }
 
 
@@ -50,4 +51,3 @@ exports.getCurrentUser = async (req, res, next) => {
         next(err)
     }
 }
-

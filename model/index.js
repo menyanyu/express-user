@@ -18,7 +18,7 @@ db.once('open', function () {
     console.log('数据库链接成功')
 })
 
-//组织到处模型类
+//组织导出模型类
 module.exports={
     User:mongoose.model('User',require('./user'))
 }
