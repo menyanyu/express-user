@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors =require('cors')
+// var bodyParser = require('body-parser');
 require ('./model/index')
 
 
@@ -19,8 +20,12 @@ app.set('view engine', 'jade');
 
 app.use(cors())
 app.use(logger('dev'));
+
+//对JSON请求体解析中间件
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+//对urlencoded请求体解析中间件,extended:true高级模式 false:普通模式 没有区别
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

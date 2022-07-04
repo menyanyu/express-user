@@ -6,7 +6,7 @@ const { jwtSecret } = require('../config/config.default')
 //用户注册
 exports.register = async (req, res, next) => {
     try {
-        let user = new User(req.body.user)
+        let user = new User(req.body)
         // //保存到数据库
         await user.save()
         user = user.toJSON()
