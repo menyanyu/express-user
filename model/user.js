@@ -26,8 +26,9 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String,
         required: null
-    }
+    },
+    
 
-})
+},{versionKey:false})//去掉__v 
 
 module.exports = userSchema

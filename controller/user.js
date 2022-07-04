@@ -12,7 +12,7 @@ exports.register = async (req, res, next) => {
         user = user.toJSON()
         delete user.password
         // //发送成功响应
-        res.status(201).json({ user })
+        res.status(200).json({ user })
     } catch (error) {
         next(error)
     }
