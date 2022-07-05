@@ -18,12 +18,12 @@ exports.register = validate([
 
 exports.login = [
     validate([
-        body('user.email').notEmpty().withMessage('邮箱不能为空'),
-        body('user.password').notEmpty().withMessage('密码不能为空')
+        body('username').notEmpty().withMessage('手机号不能为空'),
+        body('password').notEmpty().withMessage('密码不能为空')
     ]),
     validate([
-        body('user.email').custom(async (email, { req }) => {
-            const user = await User.findOne({ email }).select(['email','username','bio','image','password'])
+        body('username').custom(async (username, { req }) => {
+            const user = await User.findOne({ username }).select(['username','password','role','gender'])
             if (!user) {
                 return Promise.reject('用户不存在')
             }
@@ -32,7 +32,7 @@ exports.login = [
         })
     ]),
     validate([
-        body('user.password').custom(async (password,{req}) => {
+        body('password').custom(async (password,{req}) => {
             if (md5(password) != req.user.password) {
                 return Promise.reject('密码错误')
             }

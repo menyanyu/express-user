@@ -9,24 +9,30 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // email: {
-    //     type: String,
-    //     required: true
-    // },
     password: {
         type: String,
         required: true,
         set: value => md5(value),
         select:false
     },
-    bio: {
+    email: {
         type: String,
         required: null
+    },
+    gender: {
+        type: String,
+        required: null,
+        default:"男"
     },
     image: {
         type: String,
         required: null
     },
+    role:{
+        type: String,
+        required: null,
+        default:"admin"
+    }
     
 
 },{versionKey:false})//去掉__v 
